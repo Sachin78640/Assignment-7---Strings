@@ -1,0 +1,22 @@
+def reverse_words(s):
+    # Split the sentence into words
+    words = s.split()
+    
+    # Reverse each word
+    reversed_words = [word[::-1] for word in words]
+    
+    # Join the reversed words with whitespace
+    result = ' '.join(reversed_words)
+    
+    return result
+
+Let's test the example you provided:
+
+
+s = "Let's take LeetCode contest"
+print(reverse_words(s))
+Output:
+
+
+"s'teL ekat edoCteeL tsetnoc"
+The function correctly reverses the order of characters in each word while preserving whitespace and the initial word order. In the given example, the words "Let's", "take", "LeetCode", and "contest" are reversed to "s'teL", "ekat", "edoCteeL", and "tsetnoc", respectively. The reversed words are then joined back together with whitespace, resulting in the output "s'teL ekat edoCteeL tsetnoc".
