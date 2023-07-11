@@ -1,0 +1,24 @@
+def is_strobogrammatic(num):
+    strobogrammatic_pairs = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'}
+    left, right = 0, len(num) - 1
+    
+    while left <= right:
+        if num[left] not in strobogrammatic_pairs or num[right] not in strobogrammatic_pairs:
+            return False
+        if strobogrammatic_pairs[num[left]] != num[right]:
+            return False
+        left += 1
+        right -= 1
+    
+    return True
+
+Let's test the example you provided:
+
+
+num = "69"
+print(is_strobogrammatic(num))
+Output:
+
+
+True
+The function returns True because the string "69" represents a strobogrammatic number. When we rotate the number 180 degrees, it remains the same: "69". The function checks if the characters at corresponding positions are valid strobogrammatic pairs. In this case, "6" and "9" are valid pairs, so the function returns True.
