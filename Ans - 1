@@ -1,0 +1,38 @@
+def isomorphic_strings(s, t):
+    if len(s) != len(t):
+        return False
+    
+    s_to_t = {}  # Mapping from characters in s to corresponding characters in t
+    t_to_s = {}  # Mapping from characters in t to corresponding characters in s
+    
+    for i in range(len(s)):
+        char_s = s[i]
+        char_t = t[i]
+        
+        # Check if the mapping from s to t is consistent
+        if char_s in s_to_t:
+            if s_to_t[char_s] != char_t:
+                return False
+        else:
+            s_to_t[char_s] = char_t
+        
+        # Check if the mapping from t to s is consistent
+        if char_t in t_to_s:
+            if t_to_s[char_t] != char_s:
+                return False
+        else:
+            t_to_s[char_t] = char_s
+    
+    return True
+
+Let's test the example you provided:
+
+
+s = "egg"
+t = "add"
+print(isomorphic_strings(s, t))
+Output:
+
+
+True
+The function returns True because we can replace the characters in s to obtain t while preserving the order of characters. Specifically, we can replace "e" with "a" and "g" with "d". This mapping ensures that no two characters map to the same character, and a character can map to itself. Therefore, the strings "egg" and "add" are isomorphic.
