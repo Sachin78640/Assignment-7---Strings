@@ -1,0 +1,38 @@
+def add_strings(num1, num2):
+    i = len(num1) - 1
+    j = len(num2) - 1
+    carry = 0
+    result = []
+    
+    while i >= 0 or j >= 0 or carry > 0:
+        digit1 = int(num1[i]) if i >= 0 else 0
+        digit2 = int(num2[j]) if j >= 0 else 0
+        
+        # Calculate the sum of the current digits and the carry
+        current_sum = digit1 + digit2 + carry
+        
+        # Append the least significant digit of the sum to the result
+        result.append(str(current_sum % 10))
+        
+        # Update the carry for the next iteration
+        carry = current_sum // 10
+        
+        # Move to the next digits
+        i -= 1
+        j -= 1
+    
+    # Reverse the result and convert it to a string
+    result.reverse()
+    return ''.join(result)
+
+Let's test the example you provided:
+
+
+num1 = "11"
+num2 = "123"
+print(add_strings(num1, num2))
+Output:
+
+
+"134"
+The function correctly adds the two input strings as non-negative integers and returns the sum as a string. In this case, "11" + "123" equals 134, so the function returns "134".
