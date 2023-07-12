@@ -1,0 +1,41 @@
+Here's a Java implementation that reverses the first k characters for every 2k characters, according to the given requirements:
+
+
+public class ReverseString {
+    public static String reverseString(String s, int k) {
+        char[] arr = s.toCharArray();
+        int n = arr.length;
+        
+        for (int i = 0; i < n; i += 2 * k) {
+            int left = i;
+            int right = Math.min(i + k - 1, n - 1);
+            
+            while (left < right) {
+                char temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+        }
+        
+        return new String(arr);
+    }
+    
+    public static void main(String[] args) {
+        String s = "abcdefg";
+        int k = 2;
+        String reversed = reverseString(s, k);
+        System.out.println(reversed);
+    }
+}
+Output:
+bacdfeg
+
+In the reverseString function, we convert the input string s into a character array for easier manipulation. Then, we iterate over the string with a step of 2k, representing the start index of each segment to be reversed.
+
+Inside the loop, we determine the indices left and right that represent the range of characters to be reversed for the current segment. We use Math.min(i + k - 1, n - 1) to handle cases where there are fewer than k characters left in the string.
+
+Next, we reverse the characters within the range [left, right] using a two-pointer technique. After reversing, we move the left pointer to the right and the right pointer to the left until they meet or cross each other.
+
+Finally, we convert the character array back to a string and return the result. In the main function, we demonstrate the usage of the reverseString function with the provided example input, and print the resulting reversed string.
