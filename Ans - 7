@@ -1,0 +1,43 @@
+public class BackspaceStrings {
+    public static boolean backspaceCompare(String s, String t) {
+        String processedS = processBackspaces(s);
+        String processedT = processBackspaces(t);
+        
+        return processedS.equals(processedT);
+    }
+    
+    private static String processBackspaces(String str) {
+        StringBuilder sb = new StringBuilder();
+        
+        for (char ch : str.toCharArray()) {
+            if (ch == '#') {
+                if (sb.length() > 0) {
+                    sb.deleteCharAt(sb.length() - 1);
+                }
+            } else {
+                sb.append(ch);
+            }
+        }
+        
+        return sb.toString();
+    }
+    
+    public static void main(String[] args) {
+        String s = "ab#c";
+        String t = "ad#c";
+        boolean result = backspaceCompare(s, t);
+        System.out.println(result);
+    }
+}
+
+Output:
+true
+
+
+The backspaceCompare function first processes s and t by removing backspaces using the processBackspaces helper method.
+
+The processBackspaces method iterates through the characters of the input string str. If the character is '#', it checks if the string builder (sb) has characters to remove. If it does, it removes the last character from the string builder using deleteCharAt(sb.length() - 1). If the character is not '#', it appends it to the string builder.
+
+After processing backspaces for both s and t, the function checks if the processed strings are equal using the equals method. If they are equal, it means that both strings would be the same if typed into empty text editors, taking into account the backspaces. In this case, the function returns true. Otherwise, it returns false.
+
+In the main function, we demonstrate the usage of the backspaceCompare function with the provided example input, and print the resulting boolean value.
