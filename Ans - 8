@@ -1,0 +1,36 @@
+public class StraightLine {
+    public static boolean checkStraightLine(int[][] coordinates) {
+        int x0 = coordinates[0][0];
+        int y0 = coordinates[0][1];
+        int x1 = coordinates[1][0];
+        int y1 = coordinates[1][1];
+        
+        for (int i = 2; i < coordinates.length; i++) {
+            int x = coordinates[i][0];
+            int y = coordinates[i][1];
+            
+            if ((y1 - y0) * (x - x0) != (y - y0) * (x1 - x0)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        int[][] coordinates = {{1,2},{2,3},{3,4},{4,5},{5,6},{6,7}};
+        boolean result = checkStraightLine(coordinates);
+        System.out.println(result);
+    }
+}
+
+Output:
+true
+
+The checkStraightLine function takes the array of coordinates as input and checks if they form a straight line in the XY plane. It uses a simple slope formula to determine if the points are collinear.
+
+The function starts by extracting the x and y values of the first two coordinates: (x0, y0) and (x1, y1). It then iterates over the remaining coordinates, starting from index 2.
+
+For each subsequent coordinate (x, y), it checks if the slopes (y1 - y0) / (x1 - x0) and (y - y0) / (x - x0) are equal. If the slopes are not equal, it means the points are not collinear and the function returns false. If all slopes are equal, the function returns true, indicating that the points form a straight line.
+
+In the main function, we demonstrate the usage of the checkStraightLine function with the provided example input, and print the resulting boolean value.
