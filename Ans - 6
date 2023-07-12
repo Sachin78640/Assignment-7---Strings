@@ -1,0 +1,28 @@
+public class StringShifts {
+    public static boolean canShift(String s, String goal) {
+        if (s.length() != goal.length()) {
+            return false;
+        }
+        
+        String concatenated = s + s;
+        return concatenated.contains(goal);
+    }
+    
+    public static void main(String[] args) {
+        String s = "abcde";
+        String goal = "cdeab";
+        boolean result = canShift(s, goal);
+        System.out.println(result);
+    }
+}
+
+Output:
+true
+
+The canShift function first checks if the lengths of s and goal are equal. If they're not equal, it means no number of shifts can transform s into goal, so we return false immediately.
+
+Next, we concatenate s with itself to create a larger string concatenated. This is done to handle cases where the shift wraps around the original string. For example, if s = "abcde", then concatenated will be "abcdeabcde".
+
+Finally, we check if concatenated contains goal using the contains method. If goal is present in concatenated, it means s can be transformed into goal after some number of shifts, so we return true. Otherwise, we return false.
+
+In the main function, we demonstrate the usage of the canShift function with the provided example input, and print the resulting boolean value.
